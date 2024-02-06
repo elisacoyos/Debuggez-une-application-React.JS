@@ -26,6 +26,13 @@ export const DataProvider = ({ children }) => {
       setError(err);
     }
   }, []);
+  
+
+  // Ajout de la logique pour trier les événements et obtenir le dernier 'last'
+  const events = data?.events;
+  const sortedEvents = events?.sort((evtA, evtB) => new Date(evtA.date) > new Date(evtB.date) ? -1 : 1); // On trie les événements par date décroissante
+  const last = sortedEvents?.[0];  // On prend le premier élément du tableau trié comme le dernier événement
+
   useEffect(() => {
     if (data) return;
     getData();
@@ -37,6 +44,7 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
+        last  // Ajout de 'last' dans le contexte pour le rendre accessible dans toute l'application
       }}
     >
       {children}
