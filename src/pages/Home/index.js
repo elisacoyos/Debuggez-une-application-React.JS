@@ -124,6 +124,7 @@ const Page = () => {
           label="boom"
         />
       </div>
+      
       <div className="col contact">
         <h3>Contactez-nous</h3>
         <address>45 avenue de la République, 75000 Paris</address>
