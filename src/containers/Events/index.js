@@ -16,10 +16,10 @@ const EventList = () => {
  const filteredEvents = 
   (
     (type
-      ? data?.events.filter((event) => event.type === type) // Filtrage par type si 'type' est défini
-      : data?.events) || [] // Tous les événements si 'type' n'est pas défini
+      ? data?.events.filter((event) => event.type === type) // 3.Filtrage par type si 'type' est défini
+      : data?.events) || [] // 3.Tous les événements si 'type' n'est pas défini
   ).filter((_, index) => {
-    // Logique pour déterminer si l'événement est dans la page actuelle en fonction de la pagination
+    // 3. Applique la pagination sur les événements filtrés
     if (
       (currentPage - 1) * PER_PAGE <= index &&
       PER_PAGE * currentPage > index

@@ -6,13 +6,13 @@ import "./style.scss";
 
 const Slider = () => {
   const { data } = useData();
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);        
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
-  );
+    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1             // 1.Changement de sens du chevron pour obtenir un ordre décroissant
+  );                                                                
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
+      () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),    // 2. Ajout de la condition "- 1" à byDateDesc pour indiquer le dernier élément du tableau, page blanche   
       5000
     );
   };
@@ -45,6 +45,7 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
+                  // 7.idx remplacé par index pour le défilement des boutons radio
                   checked={index === radioIdx}
                 />
               ))}
